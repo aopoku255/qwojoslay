@@ -1,0 +1,30 @@
+import { Link } from "react-router-dom";
+import shoe from "../../assets/images/products/shoes-1.png";
+
+const ShowCaseCard1 = () => {
+  return (
+    <div
+      className="border border-gray-200 rounded-md row-span-2
+      hover:shadow-lg hover:border-transparent
+      transition-all duration-300 ease-out
+      lg:flex flex-col hidden"
+    >
+      {/* Image */}
+      <img src={shoe} alt="Shoe" className="block mx-auto my-8 md:my-16" />
+
+      {/* Content */}
+      <div className="mt-auto px-6 md:px-8 mb-6 md:mb-8 text-gray-600">
+        <p className="my-4 md:my-8 uppercase">Special Offer</p>
+        <h3 className="font-bold text-2xl md:text-3xl">
+          Comfortable Original Cotton Sneaker
+        </h3>
+        <p>One inner compartment with black satin lining</p>
+        <Link to="#" className="text-sm font-bold mt-4 block">
+          SHOP NOW
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default ShowCaseCard1;
