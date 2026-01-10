@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-export function useIndexLogic() {
+export function useLoginModalLogic() {
   const [isOpenModel, setIsOpenModal] = useState(false);
-  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const handleOpen = () => setIsOpenModal(true);
   const handleClose = () => setIsOpenModal(false);
-  const handleOpenDrawer = () => setIsOpenDrawer(true);
-  const handleCloseDrawer = () => setIsOpenDrawer(false);
-
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    mode: "onBlur",
+  });
   return {
     isOpenModel,
     handleOpen,
     handleClose,
-    isOpenDrawer,
-    handleOpenDrawer,
-    handleCloseDrawer,
+    register,
+    handleSubmit,
+    control,
+    errors,
   };
 }

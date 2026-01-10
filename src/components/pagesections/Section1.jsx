@@ -10,11 +10,11 @@ import ShowCaseCard5 from "../showcaseCards/showcaseCard5";
 const Section1 = () => {
   return (
     <>
-      <section className="grid lg:grid-cols-3 gap-4 ">
+      <div className="grid lg:grid-cols-3 gap-4 ">
         <ShowCaseCard1 />
         <ShowCaseCard2 />
         <ShowCaseCard3 />
-      </section>
+      </div>
       <div className="mt-6 lg:grid lg:grid-cols-4 gap-4 gap-y-4">
         <ShowCaseCard4
           icon={<CreditCardVerified />}
@@ -27,7 +27,7 @@ const Section1 = () => {
           subtitle="More than 97% positive & happy customers"
         />
         <ShowCaseCard5
-          offer="¢50.00 Off"
+          offer="¢100.00 Off"
           text="On Orders Over ¢1000.00"
           // subtitle="One inner compartment with black satin lining"
           image={shoe}

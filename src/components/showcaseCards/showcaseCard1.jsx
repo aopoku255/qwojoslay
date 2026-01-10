@@ -4,10 +4,10 @@ import shoe from "../../assets/images/products/shoes-1.png";
 const ShowCaseCard1 = () => {
   return (
     <div
-      className="border border-gray-200 rounded-md row-span-2
+      className="border border-gray-200 rounded-md lg:row-span-2
       hover:shadow-lg hover:border-transparent
       transition-all duration-300 ease-out
-      lg:flex flex-col hidden"
+      lg:flex lg:flex-col col-span-2 lg:col-span-1"
     >
       {/* Image */}
       <img src={shoe} alt="Shoe" className="block mx-auto my-8 md:my-16" />

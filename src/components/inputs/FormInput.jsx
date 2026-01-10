@@ -1,68 +1,56 @@
-import { Box, TextField } from "@mui/material";
-import { Small } from "./Typography";
-const SlayTextField = ({ label, InputProps, ...props }) => {
-  const boxProps = {};
-  const textFieldProps = {};
-  for (const key in props) {
-    if (spacePropList.includes(key)) {
-      boxProps[key] = props[key];
-    } else textFieldProps[key] = props[key];
-  }
-  return (
-    <Box {...boxProps}>
-      {label && (
-        <Small
-          display="block"
-          mb={1}
-          textAlign="left"
-          fontWeight="600"
-          color="grey.700"
-        >
-          {label}
-        </Small>
-      )}
+import { useState } from "react";
 
-      <TextField
-        InputProps={{
-          ...InputProps,
-          style: {
-            ...InputProps?.style,
-            height: 44,
-          },
-        }}
-        {...textFieldProps}
-      />
-    </Box>
+const FormInput = ({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  register,
+  rules,
+  error,
+}) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const isPassword = type === "password";
+
+  return (
+    <div className="flex flex-col">
+      <label
+        htmlFor={name}
+        className="my-2 text-sm text-gray-600 font-semibold"
+      >
+        {label}
+      </label>
+
+      <div className="relative">
+        <input
+          id={name}
+          type={isPassword && showPassword ? "text" : type}
+          placeholder={placeholder}
+          {...register(name, rules)}
+          className={`p-3 w-full border rounded-sm focus:outline-red-600 pr-12 ${
+            error
+              ? "border-red-600 focus:ring-1 focus:ring-red-600"
+              : "border-gray-300 hover:border-gray-500"
+          }`}
+        />
+
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setShowPassword((prev) => !prev)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-gray-500 hover:text-gray-700"
+          >
+            {showPassword ? "Hide" : "Show"}
+          </button>
+        )}
+      </div>
+
+      {error && (
+        <span className="mt-1 text-sm text-red-400 px-4">{error.message}</span>
+      )}
+    </div>
   );
 };
-const spacePropList = [
-  "m",
-  "mt",
-  "mr",
-  "mb",
-  "ml",
-  "mx",
-  "my",
-  "p",
-  "pt",
-  "pr",
-  "pb",
-  "pl",
-  "px",
-  "py",
-  "margin",
-  "marginTop",
-  "marginRight",
-  "marginBottom",
-  "marginLeft",
-  "marginX",
-  "marginY",
-  "padding",
-  "paddingTop",
-  "paddingRight",
-  "paddingBottom",
-  "paddingLeft",
-  "paddingX",
-  "paddingY",
-];
-export default SlayTextField;
+
+export default FormInput;
