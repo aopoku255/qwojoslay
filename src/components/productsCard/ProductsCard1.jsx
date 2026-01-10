@@ -15,7 +15,7 @@ const ProductsCard1 = ({ image, name, price }) => {
       <Heart className="text-gray-200 absolute top-20 right-4 hidden opacity-0 group-hover:opacity-100" />
       <p className="text-center text-gray-600">{name}</p>
       <h5 className="text-center font-bold mt-3">₵{price}.00</h5>
-      <button className="flex justify-center items-center mx-auto border border-black/60 px-8 lg:py-1 py-3 rounded-sm w-full hover:bg-black hover:text-white">
+      <button className="flex justify-center items-center mx-auto border border-black/60 px-8 lg:py-1 py-3 rounded-sm w-full hover:bg-black hover:text-white mt-3">
         Add To Cart
       </button>
     </div>

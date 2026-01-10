@@ -54,11 +54,7 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
 
 const BlackFriday = ({ categories }) => {
   return (
-    <Container
-      sx={{
-        mt: 8,
-      }}
-    >
+    <Container>
       {/* <Grid container spacing={3}>
         {categories.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>

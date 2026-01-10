@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import shoe from "../../assets/images/products/shoes-1.png";
+import nikeair from "../../assets/images/products/nikeair.png";
+import puma from "../../assets/images/products/puma.png";
+import NorthStarBlue from "../../assets/images/products/NorthStarBlue.png";
+import Carousel from "../carousel/Carousel";
 
 const ShowCaseCard1 = () => {
   return (
@@ -10,10 +14,16 @@ const ShowCaseCard1 = () => {
       lg:flex lg:flex-col col-span-2 lg:col-span-1"
     >
       {/* Image */}
-      <img src={shoe} alt="Shoe" className="block mx-auto my-8 md:my-16" />
-
+      <Carousel visibleSlides={1}>
+        {[
+          // <img src={shoe} alt="Shoe" className="block mx-auto" />,
+          <img src={nikeair} alt="Shoe" className="block mx-auto h-72" />,
+          <img src={puma} alt="Shoe" className="block mx-auto h-72" />,
+          <img src={NorthStarBlue} alt="Shoe" className="block mx-auto h-72" />,
+        ]}
+      </Carousel>
       {/* Content */}
-      <div className="mt-auto px-6 md:px-8 mb-6 md:mb-8 text-gray-600">
+      <div className="px-6 md:px-8 mb-6 md:mb-8 text-gray-600">
         <p className="my-4 md:my-8 uppercase">Special Offer</p>
         <h3 className="font-bold text-2xl md:text-3xl">
           Comfortable Original Cotton Sneaker

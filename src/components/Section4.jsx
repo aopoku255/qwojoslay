@@ -26,7 +26,7 @@ const Section4 = ({ products }) => {
         <Link to="/products">More Products</Link>
       </FlexBetween>
 
-      <Carousel visibleSlides={visibleSlides}>
+      <Carousel visibleSlides={visibleSlides} showBtns={true}>
         {products.map((product) => (
           <ProductsCard1
             key={product.id}

@@ -1,13 +1,34 @@
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect, useState } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
-const Carousel = ({ children, visibleSlides = 4 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    align: "start",
-    slidesToScroll: 1,
-  });
+const Carousel = ({
+  children,
+  visibleSlides = 4,
+  autoplay = true,
+  interval = 3000,
+  pauseOnHover = true,
+  showBtns,
+}) => {
+  const autoplayRef = useRef(
+    autoplay
+      ? Autoplay({
+          delay: interval,
+          stopOnInteraction: false,
+          stopOnMouseEnter: pauseOnHover,
+        })
+      : null
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "start",
+      slidesToScroll: 1,
+    },
+    autoplayRef.current ? [autoplayRef.current] : []
+  );
 
   const [canPrev, setCanPrev] = useState(false);
   const [canNext, setCanNext] = useState(false);
@@ -29,12 +50,7 @@ const Carousel = ({ children, visibleSlides = 4 }) => {
     <div className="relative">
       {/* Viewport */}
       <div ref={emblaRef} className="overflow-hidden">
-        <div
-          className="flex"
-          style={{
-            gap: "1.5rem",
-          }}
-        >
+        <div className="flex gap-6">
           {children.map((child, index) => (
             <div
               key={index}
@@ -49,21 +65,25 @@ const Carousel = ({ children, visibleSlides = 4 }) => {
       </div>
 
       {/* Arrows */}
-      <button
-        onClick={() => emblaApi.scrollPrev()}
-        disabled={!canPrev}
-        className="absolute -left-5 top-1/2 -translate-y-1/2 disabled:opacity-30"
-      >
-        <ArrowBack fontSize="small" />
-      </button>
+      {showBtns ? (
+        <>
+          <button
+            onClick={() => emblaApi?.scrollPrev()}
+            className="absolute left-0 top-1/2 -translate-y-1/2 disabled:opacity-30 bg-black text-white flex justify-center items-center py-2 disabled:bg-gray-300 disabled:text-gray-600 px-1 disabled:cursor-not-allowed"
+          >
+            <ArrowBack fontSize="small" />
+          </button>
 
-      <button
-        onClick={() => emblaApi.scrollNext()}
-        disabled={!canNext}
-        className="absolute -right-5 top-1/2 -translate-y-1/2 disabled:opacity-30"
-      >
-        <ArrowForward fontSize="small" />
-      </button>
+          <button
+            onClick={() => emblaApi?.scrollNext()}
+            className="absolute right-0 top-1/2 -translate-y-1/2 disabled:opacity-30 bg-black text-white flex justify-center items-center py-2 disabled:bg-gray-300 disabled:text-gray-600 px-1 disabled:cursor-not-allowed"
+          >
+            <ArrowForward fontSize="small" />
+          </button>
+        </>
+      ) : (
+        <p></p>
+      )}
     </div>
   );
 };

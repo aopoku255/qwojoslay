@@ -8,12 +8,12 @@ import Section4 from "../Section4";
 
 const Section2 = () => {
   return (
-    <div className="mt-16 pb-24">
+    <div className="mt-16">
       <Section4 products={products} />
 
       <BlackFriday />
 
-      <div className="flex items-center justify-between">
+      <div className="lg:flex lg:items-center lg:justify-between mt-16 hidden">
         <h3 className="capitalize text-xl font-bold text-gray-800">
           Deals of the day
         </h3>
