@@ -1,5 +1,3 @@
-import React from "react";
-
 const Layout1 = ({ children }) => {
   return (
     <section className="bg-[#F6F9FC]  lg:px-8 sm:px-8 px-4 ">

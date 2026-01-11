@@ -1,4 +1,5 @@
 import ProductsCard1 from "../productsCard/ProductsCard1";
+import ProductsCard2 from "../productsCard/ProductCard2";
 import { Link } from "react-router-dom";
 import arrowRight from "../../assets/icons/arrow-right.svg";
 import { products } from "../../data/section2";
@@ -26,8 +27,8 @@ const Section2 = () => {
         </div>
       </div>
       <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 mt-8">
-        {products.map(({ image, name, price }, index) => (
-          <ProductsCard1 image={image} name={name} price={price} key={index} />
+        {products.map((product, index) => (
+          <ProductsCard2 product={product} key={index} />
         ))}
       </div>
       {/* <div className="grid grid-cols-2 mt-16 gap-6">

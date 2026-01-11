@@ -3,14 +3,18 @@ import Autoplay from "embla-carousel-autoplay";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
 
-const Carousel = ({
-  children,
-  visibleSlides = 4,
-  autoplay = true,
-  interval = 3000,
-  pauseOnHover = true,
-  showBtns,
-}) => {
+const Carousel = (
+  {
+    children,
+    visibleSlides = 4,
+    autoplay = true,
+    interval = 3000,
+    pauseOnHover = true,
+    showBtns,
+    className,
+  },
+  props
+) => {
   const autoplayRef = useRef(
     autoplay
       ? Autoplay({
@@ -47,7 +51,7 @@ const Carousel = ({
   }, [emblaApi, updateButtons]);
 
   return (
-    <div className="relative">
+    <div className={`relative ${className}`}>
       {/* Viewport */}
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex gap-6">

@@ -5,7 +5,7 @@ import { H2 } from "../components/Typography";
 import { FlexBetween } from "../components/flex-box";
 import Carousel from "./carousel/Carousel";
 import { Link } from "react-router-dom";
-import ProductsCard1 from "./productsCard/ProductsCard1";
+import ProductsCard2 from "./productsCard/ProductCard2";
 
 const Section4 = ({ products }) => {
   const width = useWindowSize();
@@ -28,12 +28,7 @@ const Section4 = ({ products }) => {
 
       <Carousel visibleSlides={visibleSlides} showBtns={true}>
         {products.map((product) => (
-          <ProductsCard1
-            key={product.id}
-            image={product.image}
-            price={product.price}
-            name={product.name}
-          />
+          <ProductsCard2 product={product} key={product.id} />
         ))}
       </Carousel>
     </Container>

@@ -8,6 +8,7 @@ const FormInput = ({
   register,
   rules,
   error,
+  required,
 }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -15,15 +16,13 @@ const FormInput = ({
 
   return (
     <div className="flex flex-col">
-      <label
-        htmlFor={name}
-        className="my-2 text-sm text-gray-600 font-semibold"
-      >
+      <label htmlFor={name} className="my-2 text-sm text-gray-700 font-normal">
         {label}
       </label>
 
       <div className="relative">
         <input
+          required={required}
           id={name}
           type={isPassword && showPassword ? "text" : type}
           placeholder={placeholder}

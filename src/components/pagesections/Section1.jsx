@@ -15,7 +15,7 @@ const Section1 = () => {
         <ShowCaseCard2 />
         <ShowCaseCard3 />
       </div>
-      <div className="mt-6 lg:grid lg:grid-cols-4 gap-4 gap-y-4">
+      <div className="mt-6 md:grid lg:grid-cols-4 gap-4 gap-y-4">
         <ShowCaseCard4
           icon={<CreditCardVerified />}
           title="Secure Payment"

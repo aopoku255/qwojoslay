@@ -12,9 +12,9 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
       open={isOpenModel}
       onClose={handleClose}
       // disableScrollLock
-      className="flex justify-center items-center outline-none border-none mx-4 lg:mx-0"
+      className="flex justify-center items-center outline-none border-none lg:mx-0"
     >
-      <Card className="w-130 bg-white flex flex-col px-12  py-16 rounded-lg outline-none border-none mx-4 ">
+      <Card className="w-130 bg-white flex flex-col md:px-12 px-4  py-16 rounded-lg outline-none border-none mx-4 ">
         <form onSubmit={handleSubmit((data) => console.log(data))} className="">
           <div className="">
             <img src={logo} alt="Logo" className="block mx-auto" />
@@ -62,6 +62,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
                 fontWeight: "bold",
                 textTransform: "capitalize",
                 boxShadow: "none",
+                color: "white",
               }}
               variant="contained"
               sx={{
@@ -77,7 +78,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
               <div className="h-px w-16 bg-gray-200 mt-2"></div>
             </div>
 
-            <Button
+            {/* <Button
               fullWidth
               type="submit"
               style={{
@@ -86,6 +87,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
                 fontWeight: "normal",
                 textTransform: "capitalize",
                 boxShadow: "none",
+                color: "white",
               }}
               variant="contained"
               sx={{
@@ -94,11 +96,11 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
             >
               <img src={google} alt="" className="block mx-2" />
               Continue with google
-            </Button>
+            </Button> */}
 
             <p className="text-gray-600 text-sm text-center mt-4">
               Don't have an account?{" "}
-              <Link to="#" className="underline text-gray-800">
+              <Link to="/signup" className="underline text-gray-800">
                 Sign Up
               </Link>
             </p>

@@ -101,15 +101,18 @@ const BlackFriday = ({ categories }) => {
             </Span>
           </Paragraph>
 
-          {/* <Box
-              sx={{
-                padding: 3,
-                flexShrink: 0,
-                zIndex: 5,
-              }}
-            >
-              <WhiteButton>Shop Now</WhiteButton>
-            </Box> */}
+          <Box
+            sx={{
+              padding: 3,
+              flexShrink: 0,
+              zIndex: 5,
+            }}
+          >
+            {/* <WhiteButton>Shop Now</WhiteButton> */}
+            <button className=" bg-white text-black/80 px-3 py-1.5 font-semibold">
+              Shop Now
+            </button>
+          </Box>
         </AdWrapper>
       </Grid>
       {/* </Grid> */}

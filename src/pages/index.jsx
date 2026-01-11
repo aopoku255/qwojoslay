@@ -6,6 +6,7 @@ import LoginModal from "../components/Modal/LoginMaodal/LoginModal";
 import CartDrawer from "../components/Drawer/CartDrawer";
 import React from "react";
 import Section2 from "../components/pagesections/Section2";
+import Footer from "../components/footer/Footer1";
 
 export const Index = () => {
   const {
@@ -29,6 +30,7 @@ export const Index = () => {
           handleCloseDrawer={handleCloseDrawer}
         />
       </Layout1>
+      <Footer />
     </React.Fragment>
   );
 };
