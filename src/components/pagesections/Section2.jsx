@@ -26,7 +26,7 @@ const Section2 = () => {
           <div className="w-0 h-0.5 bg-black group-hover:w-32 transition-all duration-300 ease-in-out"></div>
         </div>
       </div>
-      <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 mt-8">
+      <div className="grid lg:grid-cols-5 gap-x-4 gap-y-8 mt-8 pb-16">
         {products.map((product, index) => (
           <ProductsCard2 product={product} key={index} />
         ))}

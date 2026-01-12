@@ -1,16 +1,11 @@
 import { useState } from "react";
-// import Link from "react-router-dom";
-// import { useSnackbar } from "notistack";
-// import { currency } from "lib";
 import { Box, Button, IconButton, Rating, styled } from "@mui/material";
 import { Favorite, FavoriteBorder, RemoveRedEye } from "@mui/icons-material";
-// import LazyImage from "components/LazyImage";
 import { FlexRowCenter } from "../../components/flex-box";
 import { H4, Paragraph, Small } from "../../components/Typography";
 import { Link } from "react-router-dom";
-// import { useAppContext } from "contexts/AppContext";
-// import ProductViewDialog from "components/products/ProductViewDialog";
-// custom styled components
+import ProductViewDialog from "./ProductViewDialog";
+
 const Card = styled(Box)(({ theme }) => ({
   borderRadius: "3px",
   transition: "all 0.3s",
@@ -54,33 +49,12 @@ const FavouriteButton = styled(IconButton)({
 // ==============================================================
 
 const ProductCard2 = ({ product }) => {
-  // const { enqueueSnackbar } = useSnackbar();
-  // const { state, dispatch } = useAppContext();
   const [openDialog, setOpenDialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  // const cartItem = state.cart.find((item) => item.slug === product.slug);
 
   // handle favourite
   const handleFavorite = () => setIsFavorite((fav) => !fav);
 
-  // handle add to cart
-  // const handleAddToCart = (product) => {
-  //   const payload = {
-  //     id: product.id,
-  //     slug: product.slug,
-  //     name: product.title,
-  //     price: product.price,
-  //     imgUrl: product.thumbnail,
-  //     qty: (cartItem?.qty || 0) + 1,
-  //   };
-  //   dispatch({
-  //     type: "CHANGE_CART_AMOUNT",
-  //     payload,
-  //   });
-  //   enqueueSnackbar("Added to Cart", {
-  //     variant: "success",
-  //   });
-  // };
   return (
     <Card height="100%">
       <CardMedia>
@@ -110,22 +84,12 @@ const ProductCard2 = ({ product }) => {
         </FavouriteButton>
       </CardMedia>
 
-      {/* <ProductViewDialog
-        openDialog={openDialog}
-        handleCloseDialog={() => setOpenDialog(false)}
-        product={{
-          id: product.id,
-          slug: product.slug,
-          title: product.title,
-          price: product.price,
-          imgGroup: [product.thumbnail, product.thumbnail],
-        }}
-      /> */}
+      <ProductViewDialog />
 
       <Box p={2} textAlign="center">
         <Paragraph>{product.name}</Paragraph>
         <H4 fontWeight={700} py={0.5}>
-          {/* {currency(product.price)} */}
+          ₵{product.price}.00
         </H4>
 
         <FlexRowCenter gap={1} mb={2}>

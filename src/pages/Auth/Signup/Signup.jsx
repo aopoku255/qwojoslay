@@ -4,9 +4,10 @@ import { useSignupLogic } from "./useSignupLogic";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import AuthLayout from "../../../layout/AuthLayout";
+import CheckBox from "../../../components/inputs/CheckBox";
 
 const Signup = () => {
-  const { register, errors, handleSubmit } = useSignupLogic();
+  const { register, errors, handleSubmit, password } = useSignupLogic();
   return (
     <AuthLayout>
       <div>
@@ -18,14 +19,25 @@ const Signup = () => {
         </h4>
         <form action="" onSubmit={handleSubmit((data) => console.log(data))}>
           <FormInput
-            label="Full Name"
+            label="First Name"
             register={register}
-            error={errors.fullname}
-            name="fullname"
-            placeholder="Andrews Opoku"
+            error={errors.firstname}
+            name="firstname"
+            placeholder="Andrews"
             type="text"
             rules={{
-              required: "Please enter full name",
+              required: "Please enter first name",
+            }}
+          />
+          <FormInput
+            label="Last Name"
+            register={register}
+            error={errors.lastname}
+            name="lastname"
+            placeholder="Opoku"
+            type="text"
+            rules={{
+              required: "Please enter last name",
             }}
           />
           <FormInput
@@ -68,26 +80,29 @@ const Signup = () => {
             register={register}
             error={errors.confirmpassword}
             rules={{
-              required: "Password is required",
-              pattern: {
-                value:
-                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                message:
-                  "Password must be at least 8 characters and include uppercase, lowercase, number, and special character",
-              },
+              required: "Please retype password",
+              validate: (value) =>
+                value === password || "Passwords do not match",
             }}
           />
           <div className="flex items-center flex-wrap gap-x-2 mt-3">
-            <input
-              type="checkbox"
+            <CheckBox
+              register={register}
               name="termsandcondition"
-              id="termsandcondition"
-              className="size-4"
+              error={errors.termsandcondition}
+              rules={{
+                required: "You must accept our terms and conditions",
+              }}
             />
             <p className="text-sm text-gray-600">By signing up, you agree to</p>
             <Link to="" className="text-md">
               Terms & Condition
             </Link>
+            {errors.termsandcondition && (
+              <p className="text-red-400 text-xs mt-1 px-4">
+                {errors.termsandcondition.message}
+              </p>
+            )}
           </div>
           <Button
             fullWidth
