@@ -21,13 +21,13 @@ const Header = ({ handleModel, handleDrawer }) => {
     <header
       className={
         scrolled
-          ? `sticky top-0 z-50 bg-white transition-all duration-300 shadow-2xl`
-          : `bg-transparent`
+          ? `sticky top-0 z-50 bg-[#F6F9FC] transition-all duration-300 shadow-2xl`
+          : ` bg-[#F6F9FC] border-b border-gray-200/50`
       }
     >
       <nav
         aria-label="Global"
-        className="mx-auto flex flex-col gap-y-8 py-6 px-4 max-w-7xl"
+        className="mx-auto flex flex-col gap-y-8 py-6 px-4 lg:px-0 max-w-7xl"
       >
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">

@@ -24,12 +24,12 @@ const ShowCaseCard1 = () => {
       </Carousel>
       {/* Content */}
       <div className="px-6 md:px-8 mb-6 md:mb-8 text-gray-600">
-        <p className="my-4 md:my-8 uppercase">Special Offer</p>
-        <h3 className="font-bold text-2xl md:text-3xl">
+        <p className="my-4 md:my-4 uppercase text-sm">Special Offer</p>
+        <h3 className="font-bold text-2xl md:text-3xl mb-2">
           Comfortable Original Cotton Sneaker
         </h3>
         <p>One inner compartment with black satin lining</p>
-        <Link to="#" className="text-sm font-bold mt-4 block">
+        <Link to="#" className="text-xs font-bold mt-6 block">
           SHOP NOW
         </Link>
       </div>

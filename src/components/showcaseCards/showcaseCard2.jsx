@@ -10,7 +10,7 @@ const ShowCaseCard2 = () => {
     >
       <Carousel visibleSlides={1}>
         {[
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 pt-3">
             {/* Image first on small screens */}
             <img
               src={jacket}
@@ -20,12 +20,14 @@ const ShowCaseCard2 = () => {
 
             {/* Text */}
             <div className="md:order-1">
-              <p className="uppercase">Jacket</p>
+              <p className="uppercase text-sm mb-4">Jackets</p>
               <h3 className="font-bold text-3xl">
                 Minimalist Genuine Cotton Jacket
               </h3>
-              <p>One inner compartment with black satin lining</p>
-              <Link to="#" className="text-sm font-bold mt-4 block">
+              <p className="text-sm mt-4">
+                One inner compartment with black satin lining
+              </p>
+              <Link to="#" className="text-xs font-bold mt-4 block">
                 SHOP NOW
               </Link>
             </div>

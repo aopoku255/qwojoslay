@@ -5,6 +5,8 @@ import { FlexRowCenter } from "../../components/flex-box";
 import { H4, Paragraph, Small } from "../../components/Typography";
 import { Link } from "react-router-dom";
 import ProductViewDialog from "./ProductViewDialog";
+import { currency } from "../../lib";
+import LoginModal from "../Modal/LoginMaodal/LoginModal";
 
 const Card = styled(Box)(({ theme }) => ({
   borderRadius: "3px",
@@ -52,7 +54,6 @@ const ProductCard2 = ({ product }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // handle favourite
   const handleFavorite = () => setIsFavorite((fav) => !fav);
 
   return (
@@ -62,15 +63,16 @@ const ProductCard2 = ({ product }) => {
           <img
             width={300}
             height={300}
-            alt="category"
-            className="product-img"
+            alt={product.name}
+            className="w-full h-full object-cover"
             src={product.image}
           />
         </Link>
 
+        {/* QUICK VIEW */}
         <AddToCartButton
           className="product-actions"
-          // onClick={() => setOpenDialog(true)}
+          onClick={() => setOpenDialog(true)}
         >
           <RemoveRedEye color="disabled" fontSize="small" />
         </AddToCartButton>
@@ -84,23 +86,21 @@ const ProductCard2 = ({ product }) => {
         </FavouriteButton>
       </CardMedia>
 
-      <ProductViewDialog />
+      {/* QUICK VIEW MODAL */}
+      <ProductViewDialog
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+        product={product}
+      />
 
       <Box p={2} textAlign="center">
         <Paragraph>{product.name}</Paragraph>
         <H4 fontWeight={700} py={0.5}>
-          ₵{product.price}.00
+          {currency(product.price)}
         </H4>
 
         <FlexRowCenter gap={1} mb={2}>
-          <Rating
-            name="read-only"
-            value={4}
-            readOnly
-            sx={{
-              fontSize: 14,
-            }}
-          />
+          <Rating value={4} readOnly sx={{ fontSize: 14 }} />
           <Small fontWeight={600} color="grey.500">
             ({product?.reviews?.length || 0})
           </Small>
@@ -113,4 +113,5 @@ const ProductCard2 = ({ product }) => {
     </Card>
   );
 };
+
 export default ProductCard2;

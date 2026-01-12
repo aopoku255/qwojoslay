@@ -1,7 +1,9 @@
 import React from "react";
 
 const sectionTwoCard = () => {
-  return <div>sectionTwoCard</div>;
+  return <div>
+    
+  </div>;
 };
 
 export default sectionTwoCard;

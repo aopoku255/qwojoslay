@@ -20,7 +20,7 @@ const Section4 = ({ products }) => {
   }, [width]);
 
   return (
-    <Container sx={{ py: 8 }}>
+    <div>
       <FlexBetween mb={3}>
         <H2 fontSize={20}>Deals Of The Day</H2>
         <Link to="/products">More Products</Link>
@@ -31,7 +31,7 @@ const Section4 = ({ products }) => {
           <ProductsCard2 product={product} key={product.id} />
         ))}
       </Carousel>
-    </Container>
+    </div>
   );
 };
 

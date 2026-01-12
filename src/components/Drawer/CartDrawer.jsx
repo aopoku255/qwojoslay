@@ -6,7 +6,7 @@ import shopingbag from "../../assets/logos/shopping-bag.svg";
 const CartDrawer = ({ isOpenDrawer, handleCloseDrawer }) => {
   return (
     <Drawer open={isOpenDrawer} anchor="right" onClose={handleCloseDrawer}>
-      <div className="lg:w-80 md:w-120 w-[97vw] h-screen">
+      <div className="lg:w-86 md:w-120 w-[97vw] h-screen">
         <div className="flex justify-between items-center">
           <div className="font-bold text-gray-600 p-4 flex items-center gap-x-2">
             <CartBag />

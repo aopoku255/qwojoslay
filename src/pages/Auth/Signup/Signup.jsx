@@ -95,7 +95,7 @@ const Signup = () => {
               }}
             />
             <p className="text-sm text-gray-600">By signing up, you agree to</p>
-            <Link to="" className="text-md">
+            <Link to="" className="text-sm">
               Terms & Condition
             </Link>
             {errors.termsandcondition && (

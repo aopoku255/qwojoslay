@@ -7,7 +7,7 @@ const Carousel = (
   {
     children,
     visibleSlides = 4,
-    autoplay = true,
+    autoplay = false,
     interval = 3000,
     pauseOnHover = true,
     showBtns,
@@ -54,10 +54,11 @@ const Carousel = (
     <div className={`relative ${className}`}>
       {/* Viewport */}
       <div ref={emblaRef} className="overflow-hidden">
-        <div className="flex gap-6">
+        <div className="flex -ml-6">
           {children.map((child, index) => (
             <div
               key={index}
+              className="pl-6"
               style={{
                 flex: `0 0 ${100 / visibleSlides}%`,
               }}

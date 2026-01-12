@@ -25,14 +25,14 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const Footer = () => {
   return (
     <footer className="bg-[#222935]">
-      <div className="lg:grid lg:grid-cols-6 lg:px-8 px-4 py-16 gap-x-16 gap-y-4">
+      <div className="lg:grid lg:grid-cols-6 px-4 lg:px-4 py-16 gap-x-16 gap-y-4 max-w-7xl mx-auto">
         <div className="lg:flex lg:flex-col gap-y-4 col-span-2">
           <Link to="/" className="block mb-2.5">
             <img src={Image} alt="Logo" className="" />
           </Link>
           <p className="text-gray-400">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat,
-            expedita.
+            Discover the latest trends in fashion with Q Fashion. Explore our
+            curated collections and stay stylish.
           </p>
           <AppStore />
         </div>
@@ -67,6 +67,19 @@ const Footer = () => {
           </p>
           <p className="text-gray-400">Email: contact@qfashion.com</p>
           <p className="text-gray-400">Phone: +233 545 09 8438</p>
+          {iconList.map((item, index) => (
+            <IconButton
+              key={index}
+              href={item.url}
+              sx={{
+                color: "white",
+              }}
+              target="_blank"
+              className="text-gray-400 hover:text-white text-sm size-10"
+            >
+              <item.icon />
+            </IconButton>
+          ))}
         </div>
       </div>
     </footer>

@@ -6,11 +6,12 @@ import ShowCaseCard4 from "../showcaseCards/showCaseCard4";
 import CreditCardVerified from "../icons/CreditCardVerified";
 import FeedbackThumbsUp from "../icons/FeedbackThumbsUp";
 import ShowCaseCard5 from "../showcaseCards/showcaseCard5";
+import { currency } from "../../lib";
 
 const Section1 = () => {
   return (
     <>
-      <div className="grid lg:grid-cols-3 gap-4 ">
+      <div className="grid lg:grid-cols-3 gap-4 py-16">
         <ShowCaseCard1 />
         <ShowCaseCard2 />
         <ShowCaseCard3 />
@@ -27,8 +28,8 @@ const Section1 = () => {
           subtitle="More than 97% positive & happy customers"
         />
         <ShowCaseCard5
-          offer="¢100.00 Off"
-          text="On Orders Over ¢1000.00"
+          offer={`${currency(100)} Off`}
+          text={`On Orders Over ${currency(1000)}`}
           // subtitle="One inner compartment with black satin lining"
           image={shoe}
         />

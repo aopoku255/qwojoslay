@@ -54,7 +54,7 @@ const AdTitle1 = styled(H3)(({ theme }) => ({
 
 const BlackFriday = ({ categories }) => {
   return (
-    <Container>
+    <div>
       {/* <Grid container spacing={3}>
         {categories.map((item) => (
           <Grid item lg={2} md={3} sm={4} xs={6} key={item.id}>
@@ -109,14 +109,14 @@ const BlackFriday = ({ categories }) => {
             }}
           >
             {/* <WhiteButton>Shop Now</WhiteButton> */}
-            <button className=" bg-white text-black/80 px-3 py-1.5 font-semibold">
+            <button className=" bg-white text-black/80 px-3 py-1.5 font-semibold cursor-pointer hover:bg-black hover:text-white transition-all duration-300 ease-in-out">
               Shop Now
             </button>
           </Box>
         </AdWrapper>
       </Grid>
       {/* </Grid> */}
-    </Container>
+    </div>
   );
 };
 export default BlackFriday;

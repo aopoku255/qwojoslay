@@ -14,10 +14,12 @@ const ShowCaseCard3 = () => {
 
         {/* Text */}
         <div className="md:order-1">
-          <p className="uppercase">MENS SHIRTS</p>
+          <p className="uppercase text-sm mb-4">MENS SHIRTS</p>
           <h3 className="font-bold text-3xl">Stylish Genuine Comfy T-shirts</h3>
-          <p>One inner compartment with black satin lining</p>
-          <Link to="#" className="text-sm font-bold mt-4 block">
+          <p className="mt-3 text-sm">
+            One inner compartment with black satin lining
+          </p>
+          <Link to="#" className="text-xs font-bold mt-4 block">
             SHOP NOW
           </Link>
         </div>
