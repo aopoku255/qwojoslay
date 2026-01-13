@@ -22,6 +22,7 @@ const Login = () => {
             register={register}
             error={errors.email}
             name="email"
+            autoComplete="email"
             placeholder="example@gmail.com"
             type="email"
             rules={{
@@ -38,6 +39,7 @@ const Login = () => {
             error={errors.password}
             name="password"
             placeholder="********"
+            autoComplete="password"
             type="password"
             rules={{
               required: "Password is required",
@@ -72,6 +74,12 @@ const Login = () => {
             Don't have an account?{" "}
             <Link to="/signup" className="font-semibold">
               Signup
+            </Link>
+          </p>
+          <p className="text-gray-600 text-sm text-center mt-4 bg-gray-100 py-3 mb-4">
+            Forgotten password?{" "}
+            <Link to="#" className="underline text-gray-800">
+              Reset
             </Link>
           </p>
         </form>

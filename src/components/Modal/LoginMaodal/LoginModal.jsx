@@ -25,6 +25,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
               label="Email"
               name="email"
               type="email"
+              autoComplete="email"
               placeholder="example@gmail.com"
               register={register}
               error={errors.email}
@@ -41,6 +42,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
               name="password"
               type="password"
               placeholder="********"
+              autoComplete="password"
               register={register}
               error={errors.password}
               rules={{
@@ -106,7 +108,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
             </p>
 
             <p className="text-gray-600 text-sm text-center mt-4 bg-gray-100 py-3 mb-4">
-              Don't have an account?{" "}
+              Forgotten password?{" "}
               <Link to="#" className="underline text-gray-800">
                 Reset
               </Link>
