@@ -38,7 +38,7 @@ const CartDrawer = ({ isOpenDrawer, handleCloseDrawer }) => {
           </div>
         </div>
         <Link
-          to=""
+          to="/cart"
           className="bg-[#D23F57] mx-4  text-center py-2.5 px-4 block rounded-sm text-sm text-white absolute bottom-8 left-0 right-0 hover:bg-red-700"
         >
           Checkout Now

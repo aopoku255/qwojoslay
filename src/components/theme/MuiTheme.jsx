@@ -15,7 +15,7 @@ const MuiTheme = ({ children }) => {
   // Replace Next.js publicRuntimeConfig with a normal config object
   const appConfig = {
     // Example values — adapt to what your themeOptions expects
-    mode: "dark",
+    mode: "light",
   };
 
   const themeOptions = customThemeOptions(appConfig, pathname);
