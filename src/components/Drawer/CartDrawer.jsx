@@ -15,9 +15,9 @@ const CartDrawer = ({ isOpenDrawer, handleCloseDrawer }) => {
             <CartBag />
             <span className="text-sm">3 item</span>
           </div>
-          <Clear />
+          <Clear onClick={handleCloseDrawer} className="cursor-pointer" />
         </div>
-        <div className="h-[80%] overflow-y-scroll">
+        <div className="h-[80%] overflow-y-scroll pb-16">
           {/* <div className="flex flex-col items-center justify-center mt-10 px-4 h-full">
             <img src={shopingbag} alt="shopping bag" className="lg:h-64" />
             <h5 className="font-bold text-gray-600 mt-6">Your bag is empty</h5>
@@ -26,7 +26,7 @@ const CartDrawer = ({ isOpenDrawer, handleCloseDrawer }) => {
             </p>
           </div> */}
           <div>
-            {products.slice(0, 3).map((product) => (
+            {products.slice(0, 5).map((product) => (
               <CartDrawerCard
                 name={product.name}
                 image={product.image}

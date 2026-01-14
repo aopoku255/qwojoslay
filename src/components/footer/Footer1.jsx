@@ -25,7 +25,7 @@ const StyledLink = styled(Link)(({ theme }) => ({
 const Footer = () => {
   return (
     <footer className="bg-[#222935]">
-      <div className="lg:grid lg:grid-cols-6 px-4 lg:px-4 py-16 gap-x-16 gap-y-4 max-w-7xl mx-auto">
+      <div className="lg:grid lg:grid-cols-6 px-4 lg:px-8 2xl:px-0 py-16 gap-x-16 gap-y-4 max-w-7xl mx-auto">
         <div className="lg:flex lg:flex-col gap-y-4 col-span-2">
           <Link to="/" className="block mb-2.5">
             <img src={Image} alt="Logo" className="" />

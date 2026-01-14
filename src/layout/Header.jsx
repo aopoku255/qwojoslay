@@ -27,7 +27,7 @@ const Header = ({ handleModel, handleDrawer }) => {
     >
       <nav
         aria-label="Global"
-        className="mx-auto flex flex-col gap-y-8 py-6 px-4 lg:px-0 max-w-7xl"
+        className="mx-auto flex flex-col gap-y-8 py-6 px-4 lg:px-8 2xl:px-0 gap-4 max-w-7xl"
       >
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">

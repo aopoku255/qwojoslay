@@ -3,10 +3,10 @@
     background-color: #F6F9FC;
 } */
 
-@font-face {
+/* @font-face {
   font-family: 'Comfortaa', 'Inter', 'Open Sans', 'Sora', sans-serif;
   src: url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Sora:wght@100..800&display=swap');
-}
+} */
 
 body {
   font-family: 'Comfortaa', 'Inter', 'Open Sans', 'Sora', sans-serif;
