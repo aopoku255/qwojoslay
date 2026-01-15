@@ -4,6 +4,7 @@ import user from "../assets/icons/user.svg";
 import search from "../assets/icons/search.svg";
 import HeaderSearch from "../components/search/HeaderSearch";
 import CartBag from "../components/icons/CartBag";
+import { Link } from "react-router-dom";
 
 const Header = ({ handleModel, handleDrawer }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -31,10 +32,10 @@ const Header = ({ handleModel, handleDrawer }) => {
       >
         <div className="flex items-center justify-between">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Qwojoslay</span>
               <img src={logo} alt="Qwojoslay logo" />
-            </a>
+            </Link>
           </div>
 
           <div className="hidden lg:flex justify-center">

@@ -23,7 +23,7 @@ const Stepper = ({ selectedStep = 1, stepperList = [], onChange }) => {
             disabled={step.disabled}
             onClick={() => handleStepClick(step, index)}
             className={`
-              px-6 py-1.5 my-1 text-sm font-semibold rounded-full transition
+              px-6 py-1.5 my-1 text-sm font-semibold rounded-full transition cursor-pointer
               ${
                 index <= selected
                   ? "bg-[#D23F57] text-white"

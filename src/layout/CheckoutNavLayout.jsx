@@ -27,7 +27,7 @@ const CheckoutNavLayout = ({ children }) => {
         navigate("/payment");
         break;
       case 3:
-        navigate("/orders");
+        navigate("/review");
         break;
       default:
         break;
@@ -44,6 +44,9 @@ const CheckoutNavLayout = ({ children }) => {
         break;
       case "/payment":
         setSelectedStep(3);
+        break;
+      case "/review":
+        setSelectedStep(4);
         break;
       default:
         break;

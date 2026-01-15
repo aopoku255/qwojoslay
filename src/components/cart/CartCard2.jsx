@@ -1,7 +1,12 @@
 import React from "react";
 import { currency } from "../../lib";
+import FloatingInput from "../inputs/FloatingInput";
+import { useCartCard2 } from "./useCartCard2";
+import { TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const CartCard2 = () => {
+  const { register, errors, handleSubmit } = useCartCard2();
   return (
     <div className=" bg-white shadow-xl py-4 rounded-lg px-4">
       <div className="flex justify-between mb-3">
@@ -23,21 +28,34 @@ const CartCard2 = () => {
         className="border border-gray-300 hover:border-gray-400 rounded-sm w-full h-36 resize-none focus:outline-red-600 p-3 text-sm text-gray-600"
       ></textarea>
       <div className="bg-gray-200/80 h-[0.25px] w-full my-3"></div>
-      <input
-        type="text"
-        className="border border-gray-300 hover:border-gray-400 rounded-sm w-full py-2 focus:outline-red-600 px-3 text-sm"
-        placeholder="Voucher"
-      />
-      <button
-        disabled
-        className="border border-red-700 w-full font-semibold mt-4 py-2 text-sm rounded-sm text-red-700 hover:bg-red-50/40 cursor-pointer"
+      <form
+        action=""
+        onSubmit={handleSubmit((data) => console.log(data))}
+        className="grid sm:grid-cols-2 lg:cols-1 gap-x-8 gap-y-4"
       >
-        Apply Voucher
-      </button>
+        <FloatingInput
+          label="Voucher"
+          placeholder="Voucher"
+          name="voucher"
+          register={register}
+          rules={{ required: "Voucher is required" }}
+          error={errors.voucher}
+        />
+
+        <button
+          type="submit"
+          className="border border-red-700 w-full font-semibold lg:mt-4 py-2 text-sm rounded-sm text-red-700 hover:bg-red-50/40 cursor-pointer"
+        >
+          Apply Voucher
+        </button>
+      </form>
       <div className="bg-gray-200/80 h-[0.25px] w-full my-3"></div>
-      <button className="border border-red-700 w-full mt-4 py-2 text-sm font-semibold rounded-sm text-white bg-[#D23F57] cursor-pointer">
+      <Link
+        to="/checkout"
+        className="border border-red-700 w-full block text-center mt-4 py-2 text-sm font-semibold rounded-sm text-white bg-[#D23F57] cursor-pointer"
+      >
         Checkout Now
-      </button>
+      </Link>
     </div>
   );
 };

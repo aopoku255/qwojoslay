@@ -1,21 +1,21 @@
-import { TextField } from "@mui/material";
+import { TextField, MenuItem } from "@mui/material";
 
-const FloatingInput = ({
+const FloatingSelect = ({
   label,
-  placeholder,
-  type = "text",
   name,
   rules,
   register,
   error,
+  options = [],
+  defaultValue = "",
 }) => {
   return (
     <TextField
+      select
       fullWidth
       size="small"
-      type={type}
       label={label}
-      placeholder={placeholder}
+      defaultValue={defaultValue}
       variant="outlined"
       error={!!error}
       helperText={error?.message}
@@ -32,8 +32,14 @@ const FloatingInput = ({
           },
         },
       }}
-    />
+    >
+      {options.map((option) => (
+        <MenuItem key={option.value} value={option.value}>
+          {option.label}
+        </MenuItem>
+      ))}
+    </TextField>
   );
 };
 
-export default FloatingInput;
+export default FloatingSelect;
