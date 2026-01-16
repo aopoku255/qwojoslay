@@ -55,7 +55,7 @@ const CheckoutNavLayout = ({ children }) => {
 
   return (
     <ShopLayout1>
-      <div className=" px-4">
+      <div className="">
         {/* Hide stepper on mobile */}
         <div className="hidden sm:block">
           <Stepper

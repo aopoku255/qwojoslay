@@ -31,7 +31,7 @@ const CartCard2 = () => {
       <form
         action=""
         onSubmit={handleSubmit((data) => console.log(data))}
-        className="grid sm:grid-cols-2 lg:cols-1 gap-x-8 gap-y-4"
+        className="grid sm:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-4"
       >
         <FloatingInput
           label="Voucher"
@@ -44,7 +44,7 @@ const CartCard2 = () => {
 
         <button
           type="submit"
-          className="border border-red-700 w-full font-semibold lg:mt-4 py-2 text-sm rounded-sm text-red-700 hover:bg-red-50/40 cursor-pointer"
+          className="border border-red-700 w-full font-semibold sm:mt-0 lg:mt-0 mt-4 py-2 text-sm rounded-sm text-red-700 hover:bg-red-50/40 cursor-pointer"
         >
           Apply Voucher
         </button>

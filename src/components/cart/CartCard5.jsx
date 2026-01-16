@@ -50,7 +50,7 @@ const CartCard5 = () => {
               error={errors.mobile_number}
             />
             <FloatingSelect
-              label="Payment Method"
+              label="Network Provider"
               name="payment"
               register={register}
               rules={{ required: "Payment method is required" }}
@@ -71,6 +71,24 @@ const CartCard5 = () => {
         <input
           type="radio"
           name="payment"
+          id="card"
+          value="card"
+          checked={watchValue === "card"}
+          onChange={(e) => setWatchValue(e.target.value)}
+          className="accent-[#D23F57] h-4 w-4 cursor-pointer"
+        />
+        <label
+          htmlFor="card"
+          className="font-semibold text-sm text-gray-700 cursor-pointer"
+        >
+          Pay With Card
+        </label>
+      </div>
+      <div className="h-px w-full bg-gray-200/70"></div>
+      <div className="flex items-center gap-x-4 pb-8 px-8 py-8 ">
+        <input
+          type="radio"
+          name="payment"
           id="cash"
           value="cash"
           checked={watchValue === "cash"}
@@ -85,7 +103,7 @@ const CartCard5 = () => {
         </label>
       </div>
       <div className="h-px w-full bg-gray-200/70"></div>
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-4 lg:gap-y-0 gap-x-8 my-4 px-8">
+      <div className="grid sm:grid-cols-2 grid-cols-1 gap-y-4 lg:gap-y-0 gap-x-8 my-4 px-8">
         <Link
           to="/checkout"
           className="border border-[#D23F57] text-center block rounded-sm py-2 text-sm font-semibold cursor-pointer text-[#D23F57] hover:bg-red-50/50 transition-all duration-300 ease-in-out"
