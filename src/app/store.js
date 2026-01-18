@@ -1,6 +1,6 @@
 import storageSession from "redux-persist/es/storage/session";
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
-import { apiSlice } from "./features/apiSlice";
+import { apiSlice } from "./features/api/apiSlice";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
@@ -12,6 +12,8 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import authReducer from "./features/auth/authSlice";
+
 const persistConfig = {
   key: "root",
   storage: storageSession,
@@ -21,6 +23,7 @@ const persistConfig = {
 // Combine all reducers
 const appReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
+  auth: authReducer,
 });
 
 // Root reducer with reset logic

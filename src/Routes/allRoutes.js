@@ -5,17 +5,20 @@ import Cart from "../pages/Cart/Cart";
 import Checkout from "../pages/Cart/Checkout";
 import CheckoutPayment from "../pages/Cart/CheckoutPayment";
 import Review from "../pages/Cart/Review";
+import { CONSTANTS } from "../utils/constants";
+const routes = CONSTANTS.ROUTES.PUBLIC_ROUTES;
+
 const publicRoutes = [
   {
-    path: "/",
+    path: routes.HOME,
     component: Index,
   },
   {
-    path: "/signup",
+    path: routes.SIGNUP,
     component: Signup,
   },
   {
-    path: "/login",
+    path: routes.LOGIN,
     component: Login,
   },
   {

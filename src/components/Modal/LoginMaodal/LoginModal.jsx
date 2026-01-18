@@ -6,7 +6,7 @@ import logo from "../../../assets/logo.svg";
 import google from "../../../assets/icons/google-1.svg";
 
 const LoginModal = ({ isOpenModel, handleClose }) => {
-  const { register, errors, handleSubmit } = useLoginModalLogic();
+  const { register, errors, handleSubmit, handleLogin } = useLoginModalLogic();
   return (
     <Modal
       open={isOpenModel}
@@ -15,7 +15,7 @@ const LoginModal = ({ isOpenModel, handleClose }) => {
       className="flex justify-center items-center outline-none border-none lg:mx-0"
     >
       <Card className="w-130 bg-white flex flex-col md:px-12 px-4  py-16 rounded-lg outline-none border-none mx-4 ">
-        <form onSubmit={handleSubmit((data) => console.log(data))} className="">
+        <form onSubmit={handleSubmit(handleLogin)} className="">
           <div className="">
             <img src={logo} alt="Logo" className="block mx-auto" />
             <h5 className="font-bold text-gray-600 my-6 text-center">

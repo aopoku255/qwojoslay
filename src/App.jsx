@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { Suspense } from "react";
 import Route from "./Routes";
 import CookieConsent from "./components/CookiesConsent";
 

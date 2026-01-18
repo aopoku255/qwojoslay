@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import AuthLayout from "../../../layout/AuthLayout";
 
 const Login = () => {
-  const { register, errors, handleSubmit } = useLoginLogic();
+  const { register, errors, handleSubmit, handleLogin } = useLoginLogic();
   return (
     <AuthLayout>
       <div>
@@ -16,7 +16,7 @@ const Login = () => {
         <h4 className="font-semibold text-lg text-gray-700 capitalize text-center mt-6">
           Welcome Back
         </h4>
-        <form action="" onSubmit={handleSubmit((data) => console.log(data))}>
+        <form action="" onSubmit={handleSubmit(handleLogin)}>
           <FormInput
             label="Email"
             register={register}
@@ -68,7 +68,7 @@ const Login = () => {
               height: 44,
             }}
           >
-            Create Account
+            Login
           </Button>
           <p className="text-gray-600 text-sm text-center mt-4">
             Don't have an account?{" "}

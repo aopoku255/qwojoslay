@@ -7,7 +7,8 @@ import AuthLayout from "../../../layout/AuthLayout";
 import CheckBox from "../../../components/inputs/CheckBox";
 
 const Signup = () => {
-  const { register, errors, handleSubmit, password } = useSignupLogic();
+  const { register, errors, handleSubmit, handleSignUp, password } =
+    useSignupLogic();
   return (
     <AuthLayout>
       <div>
@@ -17,12 +18,12 @@ const Signup = () => {
         <h4 className="font-semibold text-lg text-gray-700 capitalize text-center mt-6">
           Create Your Account
         </h4>
-        <form action="" onSubmit={handleSubmit((data) => console.log(data))}>
+        <form action="" onSubmit={handleSubmit(handleSignUp)}>
           <FormInput
             label="First Name"
             register={register}
-            error={errors.firstname}
-            name="firstname"
+            error={errors.firstName}
+            name="firstName"
             placeholder="Andrews"
             type="text"
             rules={{
@@ -32,8 +33,8 @@ const Signup = () => {
           <FormInput
             label="Last Name"
             register={register}
-            error={errors.lastname}
-            name="lastname"
+            error={errors.lastName}
+            name="lastName"
             placeholder="Opoku"
             type="text"
             rules={{
@@ -88,8 +89,8 @@ const Signup = () => {
           <div className="flex items-center flex-wrap gap-x-2 mt-3">
             <CheckBox
               register={register}
-              name="termsandcondition"
-              error={errors.termsandcondition}
+              name="termsAndConditions"
+              error={errors.termsAndConditions}
               rules={{
                 required: "You must accept our terms and conditions",
               }}
