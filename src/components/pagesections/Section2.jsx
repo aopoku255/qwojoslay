@@ -19,7 +19,7 @@ const Section2 = () => {
           Deals of the day
         </h3>
         <div className="group">
-          <Link to="" className="flex items-center gap-2">
+          <Link to="/products" className="flex items-center gap-2">
             More Products
             <img src={arrowRight} alt="" className="h-4" />
           </Link>

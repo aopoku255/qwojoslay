@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function useCartCardDrawer() {
-  const [orders, setOrders] = useState(1);
+  const [orders, setOrders] = useState(0);
   const [amount] = useState(210);
 
   const handleOrderIncrement = () => {
@@ -9,7 +9,7 @@ export function useCartCardDrawer() {
   };
 
   const handleOrderDecrease = () => {
-    setOrders((prev) => Math.max(1, prev - 1));
+    setOrders((prev) => Math.max(0, prev - 1));
   };
 
   const totalAmount = orders * amount;

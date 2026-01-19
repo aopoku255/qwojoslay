@@ -6,6 +6,8 @@ import Checkout from "../pages/Cart/Checkout";
 import CheckoutPayment from "../pages/Cart/CheckoutPayment";
 import Review from "../pages/Cart/Review";
 import { CONSTANTS } from "../utils/constants";
+import ProductDetails from "../pages/products/ProductDetails";
+import Products from "../pages/products/products";
 const routes = CONSTANTS.ROUTES.PUBLIC_ROUTES;
 
 const publicRoutes = [
@@ -36,6 +38,14 @@ const publicRoutes = [
   {
     path: "/review",
     component: Review,
+  },
+  {
+    path: "/products",
+    component: Products,
+  },
+  {
+    path: "/product/:slug",
+    component: ProductDetails,
   },
 ];
 
