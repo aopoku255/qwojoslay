@@ -10,8 +10,13 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { currency } from "../../lib";
 import Carousel from "../carousel/Carousel";
+import DOMPurify from "dompurify";
 
 const ProductViewDialog = ({ open, onClose, product }) => {
+  const safeDescription = DOMPurify.sanitize(
+    product.description || "No description available for this product.",
+  );
+
   if (!product) return null;
 
   return (
@@ -28,21 +33,20 @@ const ProductViewDialog = ({ open, onClose, product }) => {
       <DialogContent>
         <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Carousel visibleSlides={1} showBtns={true} className="h-full">
-            {[
+            {(product?.images ?? []).map((img, index) => (
               <img
-                src={product.image}
+                key={index}
+                src={img.url}
                 alt={product.name}
-                width={300}
-                height={300}
-                className="w-full h-full object-contain rounded-md"
-              />,
-            ]}
+                className="w-full h-96 object-contain"
+              />
+            ))}
           </Carousel>
           <Box marginTop={8}>
             <h4 className="text-2xl font-bold text-black/80">{product.name}</h4>
             <div className="flex gap-x-3 items-center mt-2 font-semibold text-gray-300 text-sm">
               <p className="uppercase">Category: </p>
-              <p>Fashion</p>
+              <p>{product.category?.name || "Uncategorized"}</p>
             </div>
             <p className="mt-4 font-bold text-3xl text-red-700">
               {currency(product.price)}
@@ -51,12 +55,13 @@ const ProductViewDialog = ({ open, onClose, product }) => {
               <Rating value={4} readOnly sx={{ fontSize: 18 }} />
               <p className="text-sm">(50)</p>
             </div>
-            <p className="text-black/70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-              nemo blanditiis voluptatum harum? Itaque expedita numquam
-              voluptates possimus quaerat quo obcaecati et exercitationem,
-              repellat, tenetur sed suscipit eligendi.
-            </p>
+
+            <p
+              className="text-black/70"
+              dangerouslySetInnerHTML={{
+                __html: safeDescription.slice(0, 300),
+              }}
+            />
             <div className="h-px w-full bg-gray-100 mt-4"></div>
             <button className="mt-6   py-2 hover:bg-red-700 hover:text-white mb-12 px-8 bg-red-800 text-white rounded-sm font-semibold">
               Add To Cart
