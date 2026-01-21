@@ -8,7 +8,12 @@ const index = () => {
     <React.Fragment>
       <Routes>
         {publicRoutes.map((route, index) => (
-          <Route key={index} path={route.path} element={<route.component />} />
+          <Route
+            key={index}
+            path={route.path}
+            element={<route.component />}
+            exact={true}
+          />
         ))}
       </Routes>
     </React.Fragment>
