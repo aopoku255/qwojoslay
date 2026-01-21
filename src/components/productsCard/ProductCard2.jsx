@@ -27,7 +27,7 @@ const ProductCard2 = ({ product }) => {
             height={300}
             alt={product.name}
             className="w-full h-full object-cover"
-            src={product.image}
+            src={product.images[0]?.url}
           />
         </Link>
 

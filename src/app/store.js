@@ -13,6 +13,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import authReducer from "./features/auth/authSlice";
+import productReducer from "./features/products/productSlice";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const persistConfig = {
 const appReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,
   auth: authReducer,
+  products: productReducer,
 });
 
 // Root reducer with reset logic

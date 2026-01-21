@@ -1,17 +1,58 @@
-import React, { useState } from "react";
+import React from "react";
 import Layout1 from "../../layout/Layout1";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { Rating } from "@mui/material";
 import { currency } from "../../lib";
+import { useProductDetailsLogic } from "./useProductDetailsLogic";
 
 const ProductDetails = () => {
   const { state } = useLocation();
+  const { slug } = useParams();
 
-  const images = state?.images || [state?.image];
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const {
+    productDetail,
+    error,
+    isLoading,
 
-  const colors = ["Black", "Blue", "Red"];
-  const sizes = ["SM", "MD", "L", "XL", "XXL"];
+    images,
+    variants,
+
+    selectedImage,
+    selectedColor,
+    selectedSize,
+    availableSizes,
+
+    selectImage,
+    selectColor,
+    selectSize,
+    handleAddToCart,
+  } = useProductDetailsLogic(slug, state);
+
+  if (isLoading) {
+    return (
+      <Layout1>
+        <div className="py-16">Loading...</div>
+      </Layout1>
+    );
+  }
+
+  if (error) {
+    return (
+      <Layout1>
+        <div className="py-16 text-red-600">
+          Failed to load product details.
+        </div>
+      </Layout1>
+    );
+  }
+
+  if (!productDetail) {
+    return (
+      <Layout1>
+        <div className="py-16">Product not found.</div>
+      </Layout1>
+    );
+  }
 
   return (
     <Layout1>
@@ -19,29 +60,25 @@ const ProductDetails = () => {
         {/* LEFT: IMAGE GALLERY */}
         <div className="flex flex-col gap-y-4">
           {/* Main Image */}
-          <div className=" rounded-md overflow-hidden">
+          <div className="rounded-md overflow-hidden">
             <img
-              src={selectedImage}
-              alt="Product"
+              src={selectedImage || productDetail?.images?.[0]?.url}
+              alt={productDetail?.name || "Product"}
               className="w-full h-105 object-cover"
             />
           </div>
 
           {/* Thumbnails */}
-          <div className="flex items-center justify-center gap-x-3">
-            {images.map((img, index) => (
+          <div className="flex items-center justify-center gap-x-3 mt-8">
+            {images.map((url, index) => (
               <button
-                key={index}
-                onClick={() => setSelectedImage(img)}
+                key={`${url}-${index}`}
+                onClick={() => selectImage(url)}
                 className={`border cursor-pointer rounded-sm overflow-hidden 
-                  ${
-                    selectedImage === img
-                      ? "border-brand-red"
-                      : "border-gray-300"
-                  }`}
+                  ${selectedImage === url ? "border-brand-red" : "border-gray-300"}`}
               >
                 <img
-                  src={img}
+                  src={url}
                   alt=""
                   className="w-20 h-20 object-cover hover:opacity-80"
                 />
@@ -52,11 +89,15 @@ const ProductDetails = () => {
 
         {/* RIGHT: PRODUCT INFO */}
         <div className="flex flex-col gap-y-4 items-start">
-          <h3 className="text-3xl text-black/80 font-bold">{state?.name}</h3>
+          <h3 className="text-3xl text-black/80 font-bold">
+            {productDetail?.name}
+          </h3>
 
           <p className="flex gap-x-2">
             <span className="font-semibold text-gray-600">CATEGORY:</span>
-            <span className="text-gray-600">HOODIE</span>
+            <span className="text-gray-600">
+              {productDetail?.category?.name || "Uncategorized"}
+            </span>
           </p>
 
           <div className="flex gap-x-2 items-center">
@@ -67,45 +108,65 @@ const ProductDetails = () => {
 
           {/* Colors */}
           <h4 className="font-semibold">Options</h4>
-          <div className="flex gap-x-2">
-            {colors.map((item) => (
-              <label key={item} className="cursor-pointer">
-                <input type="radio" name="colors" className="peer hidden" />
+          <div className="flex gap-x-2 flex-wrap">
+            {variants.map((variant) => (
+              <label key={variant.id} className="cursor-pointer">
+                <input
+                  type="radio"
+                  name="colors"
+                  className="peer hidden"
+                  checked={selectedColor === variant.color}
+                  onChange={() => selectColor(variant.color)}
+                />
                 <span
                   className="px-5 py-1.5 text-sm rounded-sm block bg-gray-200 
                   peer-checked:bg-brand-red peer-checked:text-white"
                 >
-                  {item}
+                  {variant?.color}
                 </span>
               </label>
             ))}
           </div>
 
-          {/* Sizes */}
+          {/* Sizes (based on selected color) */}
           <h4 className="font-semibold">Sizes</h4>
           <div className="flex gap-x-2 flex-wrap">
-            {sizes.map((item) => (
-              <label key={item} className="cursor-pointer">
-                <input type="radio" name="sizes" className="peer hidden" />
+            {availableSizes.map((size) => (
+              <label
+                key={`${selectedColor}-${size}`}
+                className="cursor-pointer"
+              >
+                <input
+                  type="radio"
+                  name="sizes"
+                  value={size}
+                  className="peer hidden"
+                  checked={selectedSize === size}
+                  onChange={() => selectSize(size)}
+                />
                 <span
-                  className="px-5 py-1.5 text-sm rounded-sm block bg-gray-200 
+                  className="px-5 py-1.5 text-sm rounded-sm block bg-gray-200
                   peer-checked:bg-brand-red peer-checked:text-white"
                 >
-                  {item}
+                  {size}
                 </span>
               </label>
             ))}
           </div>
 
           <h2 className="font-bold text-3xl text-brand-red">
-            {currency(state?.price)}
+            {currency(productDetail?.price || 0)}
           </h2>
 
           <p className="text-gray-600 text-sm">
-            <span className="font-semibold">Stock Available:</span> 20
+            <span className="font-semibold">Stock Available:</span>{" "}
+            {productDetail?.stock || 0}
           </p>
 
-          <button className="bg-brand-red text-white px-6 py-2.5 rounded-sm text-sm font-semibold">
+          <button
+            className="bg-brand-red text-white px-6 py-2.5 rounded-sm text-sm font-semibold"
+            onClick={handleAddToCart}
+          >
             Add To Cart
           </button>
         </div>

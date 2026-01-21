@@ -1,12 +1,14 @@
 import Layout1 from "../layout/Layout1";
 // import Section1 from "../components/pagesections/Section1";
 import React, { lazy, Suspense } from "react";
+import { useIndexLogic } from "./useIndexLogic";
 // import Section2 from "../components/pagesections/Section2";
 
 const Section1 = lazy(() => import("../components/pagesections/Section1"));
 const Section2 = lazy(() => import("../components/pagesections/Section2"));
 
 export const Index = () => {
+  const { homeData } = useIndexLogic();
   return (
     <React.Fragment>
       <Layout1>

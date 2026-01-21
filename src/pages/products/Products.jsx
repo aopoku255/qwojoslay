@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Layout1 from "../../layout/Layout1";
-import { products } from "../../data/section2";
+// import { products } from "../../data/section2";
 import ProductsCard2 from "../../components/productsCard/ProductCard2";
+import { useSection2Logic } from "../../components/pagesections/useSection2Logic";
 
 const Products = () => {
   const links = [
@@ -15,6 +16,7 @@ const Products = () => {
     "JEWELLERY",
     "OTHER",
   ];
+  const { products } = useSection2Logic();
   return (
     <Layout1>
       <div className="grid lg:grid-cols-4 py-8 gap-x-8">
