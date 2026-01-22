@@ -10,8 +10,6 @@ import { useSection2Logic } from "./useSection2Logic";
 const Section2 = () => {
   const { products, isLoading } = useSection2Logic();
 
-  console.log("Products in Section2:", products);
-
   return (
     <div className="mt-16">
       <Section4 products={products} />

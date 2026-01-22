@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:8081/api",
+  baseUrl: "https://qfashion-485018.uc.r.appspot.com/api",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth?.user?.token;
 

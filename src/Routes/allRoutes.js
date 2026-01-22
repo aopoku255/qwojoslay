@@ -7,7 +7,7 @@ import CheckoutPayment from "../pages/Cart/CheckoutPayment";
 import Review from "../pages/Cart/Review";
 import { CONSTANTS } from "../utils/constants";
 import ProductDetails from "../pages/products/ProductDetails";
-import Products from "../pages/products/products";
+import Products from "../pages/products/Products";
 const routes = CONSTANTS.ROUTES.PUBLIC_ROUTES;
 
 const publicRoutes = [
