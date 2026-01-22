@@ -26,6 +26,7 @@ const ProductDetails = () => {
     selectColor,
     selectSize,
     handleAddToCart,
+    data,
   } = useProductDetailsLogic(slug, state);
 
   if (isLoading) {
@@ -165,7 +166,7 @@ const ProductDetails = () => {
 
           <button
             className="bg-brand-red text-white px-6 py-2.5 rounded-sm text-sm font-semibold"
-            onClick={handleAddToCart}
+            onClick={(e) => handleAddToCart(e, data)}
           >
             Add To Cart
           </button>

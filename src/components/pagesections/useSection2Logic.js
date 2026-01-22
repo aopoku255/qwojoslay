@@ -12,17 +12,20 @@ export function useSection2Logic() {
     data: getAllProducts,
     isSuccess,
     isLoading,
+    refetch,
   } = useGetAllProductsQuery();
 
   useEffect(() => {
     if (isSuccess && getAllProducts) {
-      dispatch(setProducts(getAllProducts)); // 👈 NO spread
+      dispatch(setProducts(getAllProducts));
     }
   }, [dispatch, getAllProducts, isSuccess]);
 
-  const products = useSelector(selectProducts);
+  useEffect(() => {
+    refetch();
+  }, [dispatch, getAllProducts, isSuccess]);
 
-  console.log(products);
+  const products = useSelector(selectProducts);
 
   return { products, isLoading };
 }

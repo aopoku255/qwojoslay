@@ -11,8 +11,6 @@ export function useIndexLogic() {
   const handleCloseDrawer = () => setIsOpenDrawer(false);
   const { data: homeData } = useHomeQuery();
 
-  console.log("Home Data:", homeData);
-
   return {
     isOpenModel,
     handleOpen,

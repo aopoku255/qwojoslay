@@ -5,10 +5,11 @@ import {
   selectProductDetails,
   setProductDetails,
 } from "../../app/features/products/productSlice";
+import { useCartLogic } from "../Cart/useCartLogic";
 
 export function useProductDetailsLogic(slug, fallbackStateProduct = null) {
   const dispatch = useDispatch();
-
+  const { handleAddToCart } = useCartLogic();
   const {
     data: productDetails,
     error,
@@ -100,21 +101,19 @@ export function useProductDetailsLogic(slug, fallbackStateProduct = null) {
   const selectColor = (color) => setSelectedColor(color);
   const selectSize = (size) => setSelectedSize(size);
 
-  const handleAddToCart = () => {
-    // Implement add to cart logic here
-    console.log("Add to cart:", {
-      productId: productDetail.id,
-      variantId: selectedVariant?.id,
-      size: selectedSize,
-      color: selectedColor,
-    });
+  const data = {
+    productId: productDetail.id,
+    variantId: selectedVariant?.id,
+    size: selectedSize,
+    option: selectedColor,
+    quantity: 1,
+    guestId: "8c1b05be-e9cb-4662-adfa-df72a8a6903a",
   };
 
   return {
     productDetail,
     error,
     isLoading,
-
     images,
     variants,
 
@@ -128,5 +127,6 @@ export function useProductDetailsLogic(slug, fallbackStateProduct = null) {
     selectColor,
     selectSize,
     handleAddToCart,
+    data,
   };
 }
